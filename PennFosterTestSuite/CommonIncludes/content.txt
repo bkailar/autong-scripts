@@ -1,2 +1,3 @@
 !include -c <PennFosterTestSuite.CommonFiles.CommonConfigurations
 !include -c <PennFosterTestSuite.CommonFiles.DataAndLocatorObjects
+!include -c <PennFosterTestSuite.CommonFiles.CommonScenarios

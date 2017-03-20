@@ -1,39 +1,108 @@
-!|Scenario                          |initialize test setup with result name|resultname                                                  |
-|test File                          |@resultname                           |Of Type|XML|At Path|./infoarmor_reports|With Style|demostyle|
-|read login data from excelsheet row|2                                                                                                  |
+!|Scenario|initialize test setup with result name|resultname                                                 |
+|test File|@resultname                           |Of Type|XML|At Path|pennfoster_reports|With Style|demostyle|
+|init user                                                                                                   |
 
 !|Scenario  |log result|result|with comment|comment|in page|page|
 |test result|ID=@page&&RES=@result&&CMT=@comment                |
 
 !|Scenario    |start browser and open url|url                                                   |
-|start browser|${defaultBrowser}                                                                |
+|start browser|chrome                                                                           |
 |maximize browser                                                                               |
 |open URL     |@url                                                                             |
 |log result   |COMMENT                   |with comment|Opened the URL: @url|in page|Default Page|
 
-!|Scenario |login with username|username    |and password                        |password          |
-|type      |@username          |into        |{$LOGIN.usernamefield}              |text field        |
-|type      |@password          |into        |{$LOGIN.passwordfield}              |text field        |
-|log result|COMMENT            |with comment|After entering username and password|in page|Login Page|
-|click     |{$LOGIN.loginbutton}                                                                    |
-|verify login action                                                                                |
+!|Scenario          |login with username|username    |and password                        |password          |
+|wait for element   |{$STUDENTLMSPFX.textparam}                                                              |
+|click              |{$STUDENTLMSPFX.textparam}                                                              |
+|wait for element   |{$STUDENTLMSPFX.textparam}                                                              |
+|type               |@username          |into        |{$STUDENTLMSPFX.textparam}          |text field        |
+|wait for element   |{$STUDENTLMSPFX.selectparamtype}                                                        |
+|select index number|1                  |from        |{$STUDENTLMSPFX.selectparamtype}                       |
+|log result         |COMMENT            |with comment|Entered username                    |in page|Login Page|
+|wait for element   |{$STUDENTLMSPFX.buttonbtnprimarycontinue}                                               |
+|click              |{$STUDENTLMSPFX.buttonbtnprimarycontinue}                                               |
+|wait for element   |{$LOGIN.textpassword}                                                                   |
+|click              |{$LOGIN.textpassword}                                                                   |
+|wait for element   |{$LOGIN.textpassword}                                                                   |
+|type               |@password          |into        |{$LOGIN.textpassword}               |text field        |
+|log result         |COMMENT            |with comment|After entering username and password|in page|Login Page|
+|wait for element   |{$LOGIN.buttonbtnprimarysignin}                                                         |
+|click              |{$LOGIN.buttonbtnprimarysignin}                                                         |
 
-!|Scenario           |verify login action                                                                                                             |
-|wait for element    |.//a[contains(text(),'Logout')]                                                                                                 |
-|variable            |loginSuccess                   |equals to                                                                                       |
-|verify page contains|.//a[contains(text(),'Logout')]|element                                                                                         |
-|If                  |{$loginSuccess}                                                                                                                 |
-|log result          |{$loginSuccess}                |with comment|Logged in to InfoArmor application successfully as {$username}|in page|Verify Login|
-|Else                                                                                                                                                 |
-|log result          |{$loginSuccess}                |with comment|Could not log into the InfoArmor application                  |in page|Verify Login|
-|End If                                                                                                                                               |
+!|Scenario       |verify login action                                                                                            |
+|variable        |loginSuccess   |equals to                                                                                      |
+|wait for element|{$DEFAULTDASHBOARD.spanstudentidnumber}                                                                        |
+|assert          |{$loginSuccess}|true with message|Assert login successful                                                      |
+|If              |{$loginSuccess}                                                                                                |
+|log result      |{$loginSuccess}|with comment     |Logged in to the application successfully as {$username}|in page|Verify Login|
+|Else                                                                                                                            |
+|log result      |{$loginSuccess}|with comment     |{$username} could not log into the application          |in page|Verify Login|
+|End If                                                                                                                          |
+
+!|Scenario            |verify course content                                                                              |
+|wait for element     |{$DEFAULTDASHBOARD.spanlinktext}                                                                   |
+|click                |{$DEFAULTDASHBOARD.spanlinktext}                                                                   |
+|wait for element     |{$MYCOURSES.span}                                                                                  |
+|log result           |COMMENT        |with comment     |Opened Program and Courses         |in page|Verify Course Content|
+|click                |{$MYCOURSES.span}                                                                                  |
+|wait for element     |{$MYCOURSES.linkbtnmain}                                                                           |
+|pause  execution  for|3              |seconds                                                                            |
+|log result           |COMMENT        |with comment     |Resuming the course                |in page|Verify Course Content|
+|click                |{$MYCOURSES.linkbtnmain}                                                                           |
+|pause  execution  for|3              |seconds                                                                            |
+|variable             |videoExists    |equals  to                                                                         |
+|wait for element     |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                                          |
+|assert               |{$videoExists} |true with message|Assert video course content exists                               |
+|If                   |{$videoExists}                                                                                     |
+|log result           |{$videoExists} |with comment     |Video course content exists        |in page|Verify Course Content|
+|Else                                                                                                                     |
+|log result           |{$videoExists} |with comment     |Video course content does not exist|in page|Verify Course Content|
+|End If                                                                                                                   |
+|click                |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                                          |
+|pause  execution  for|3              |seconds                                                                            |
+|variable             |videoPlaying   |equals  to                                                                         |
+|wait for element     |{$VIDEOPAGE.divvjsplaycontrolpause}                                                                |
+|assert               |{$videoPlaying}|true with message|Assert video is playing                                          |
+|If                   |{$videoPlaying}                                                                                    |
+|log result           |{$videoPlaying}|with comment     |Video is playing                   |in page|Verify Course Content|
+|Else                                                                                                                     |
+|log result           |{$videoPlaying}|with comment     |Video is not playing               |in page|Verify Course Content|
+|End If                                                                                                                   |
+|click                |{$VIDEOPAGE.divvjsplaycontrolpause}                                                                |
+|wait for element     |{$VIDEOPAGE.linkuniversitylogo}                                                                    |
+|click                |{$VIDEOPAGE.linkuniversitylogo}                                                                    |
+
+!|Scenario              |verify billing info                                                        |
+|wait for element       |{$VIDEOPAGE.link}                                                          |
+|click                  |{$VIDEOPAGE.link}                                                          |
+|wait for element       |{$BILLINGPAYMENTS.headerh}                                                 |
+|read and save text from|{$BILLINGPAYMENTS.headerh}                                                 |
+|log result             |COMMENT|with comment|Billing info {$varText}|in page|Verify Billing Details|
 
 !|Scenario    |read and save text from|element  |
 |variable     |varText                |equals to|
 |get text from|@element                         |
 
-!|Scenario       |log out                                                                                |
-|click           |.//a[text()='Logout']                                                                  |
-|wait for element|{$LOGIN.usernamefield}                                                                 |
-|log result      |true|with comment|Logged out of InfoArmor application successfully|in page|Verify Login|
+!|Scenario           |log out                                                                                                            |
+|wait for element    |{$RESOURCES.spanlinktexthome}                                                                                      |
+|click               |{$RESOURCES.spanlinktexthome}                                                                                      |
+|wait for element    |{$DEFAULTDASHBOARD.iconiconusername}                                                                               |
+|click               |{$DEFAULTDASHBOARD.iconiconusername}                                                                               |
+|wait for element    |{$DEFAULTDASHBOARD.linklogout}                                                                                     |
+|click               |{$DEFAULTDASHBOARD.linklogout}                                                                                     |
+|set page time out   |1                                                                                                                  |
+|variable            |logoutSuccess                   |equals to                                                                         |
+|verify page contains|{$STUDENTLMSPFX.spanalertmsgtxt}|element                                                                           |
+|set page time out   |30                                                                                                                 |
+|assert              |{$logoutSuccess}                |true with message|Assert logout successful                                        |
+|If                  |{$logoutSuccess}                                                                                                   |
+|log result          |{$logoutSuccess}                |with comment     |Logged out of the application successfully|in page|Verify Logout|
+|Else                                                                                                                                    |
+|log result          |{$logoutSuccess}                |with comment     |Could not log out of the application      |in page|Verify Logout|
+|End If                                                                                                                                  |
 
+!|Scenario|init user          |
+|variable |username|equals  to|
+|evaluate |s41074081          |
+|variable |password|equals  to|
+|evaluate |Password1          |
