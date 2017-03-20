@@ -1,6 +1,26 @@
 |import                          |
 |net.indecomm.autong.api.fitnesse|
 
+----
+'''Test Steps'''
+1. Open the Test URL
+2. Login with the student username and given password and verify if student logged in successfully
+3. Go to Programs and Courses and resume the existing course  
+4. Verify if the video is playing
+5. Go to Billings and Payements page and verify the billing info
+6. Go to home page and log-out of the application
+7. Verify student logged out successfully
+
+
+'''Pre condition for script execution'''
+Test URL: https://s-my.pennfoster.com/StudentLMSPFX/
+Username: - s41074081
+Password: - Password1
+
+
+'''Post execution instructions'''
+Not applicable
+
 !include -c <PennFosterTestSuite.CommonIncludes
 
 
