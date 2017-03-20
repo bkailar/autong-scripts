@@ -1,0 +1,39 @@
+!|Scenario                          |initialize test setup with result name|resultname                                                  |
+|test File                          |@resultname                           |Of Type|XML|At Path|./infoarmor_reports|With Style|demostyle|
+|read login data from excelsheet row|2                                                                                                  |
+
+!|Scenario  |log result|result|with comment|comment|in page|page|
+|test result|ID=@page&&RES=@result&&CMT=@comment                |
+
+!|Scenario    |start browser and open url|url                                                   |
+|start browser|${defaultBrowser}                                                                |
+|maximize browser                                                                               |
+|open URL     |@url                                                                             |
+|log result   |COMMENT                   |with comment|Opened the URL: @url|in page|Default Page|
+
+!|Scenario |login with username|username    |and password                        |password          |
+|type      |@username          |into        |{$LOGIN.usernamefield}              |text field        |
+|type      |@password          |into        |{$LOGIN.passwordfield}              |text field        |
+|log result|COMMENT            |with comment|After entering username and password|in page|Login Page|
+|click     |{$LOGIN.loginbutton}                                                                    |
+|verify login action                                                                                |
+
+!|Scenario           |verify login action                                                                                                             |
+|wait for element    |.//a[contains(text(),'Logout')]                                                                                                 |
+|variable            |loginSuccess                   |equals to                                                                                       |
+|verify page contains|.//a[contains(text(),'Logout')]|element                                                                                         |
+|If                  |{$loginSuccess}                                                                                                                 |
+|log result          |{$loginSuccess}                |with comment|Logged in to InfoArmor application successfully as {$username}|in page|Verify Login|
+|Else                                                                                                                                                 |
+|log result          |{$loginSuccess}                |with comment|Could not log into the InfoArmor application                  |in page|Verify Login|
+|End If                                                                                                                                               |
+
+!|Scenario    |read and save text from|element  |
+|variable     |varText                |equals to|
+|get text from|@element                         |
+
+!|Scenario       |log out                                                                                |
+|click           |.//a[text()='Logout']                                                                  |
+|wait for element|{$LOGIN.usernamefield}                                                                 |
+|log result      |true|with comment|Logged out of InfoArmor application successfully|in page|Verify Login|
+

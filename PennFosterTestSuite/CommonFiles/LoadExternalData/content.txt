@@ -1,0 +1,8 @@
+!| Scenario     |read login data from excelsheet row|row                                              |
+|load           |Login                              |ExcelSheetFrom|{$DATASHEET.datapath}|In|read|Mode|
+|variable       |username                           |equals to                                        |
+|getFromExcelRow|@row                               |Column        |1                                 |
+|variable       |password                           |equals to                                        |
+|getFromExcelRow|@row                               |Column        |2                                 |
+|unload ExcelSheet                                                                                    |
+

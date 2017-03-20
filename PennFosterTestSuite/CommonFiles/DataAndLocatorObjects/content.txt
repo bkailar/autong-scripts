@@ -1,0 +1,49 @@
+|Object Repository|RESOURCES                             |
+|Id               |Value                           |Type |
+|player           |jquery_jplayer_1                |id   |
+|linkjpplayplay   |.jp-play                        |css  |
+|linkjppausepause |.jp-pause                       |css  |
+|spanlinktexthome |//span[contains(text(), 'Home')]|xpath|
+
+
+|Object Repository       |STUDENTLMSPFX                  |
+|Id                      |Value                     |Type|
+|textparam               |param                     |id  |
+|selectparamtype         |paramType                 |id  |
+|buttonbtnprimarycontinue|.btn.btn-primary.btn-block|css |
+|spanalertmsgtxt         |.alert-msg-txt            |css |
+
+
+|Object Repository  |DEFAULTDASHBOARD                                   |
+|Id                 |Value                                        |Type |
+|spanstudentidnumber|.hidden-sm.hidden-xs.student-id-number       |css  |
+|spanlinktext       |//span[contains(text(), 'Program & Courses')]|xpath|
+|iconiconusername   |.icon-username                               |css  |
+|linklogout         |//a[contains(., 'Logout')]                   |xpath|
+
+
+|Object Repository    |BILLINGPAYMENTS                            |
+|Id                   |Value                                |Type |
+|headerh              |.h2                                  |css  |
+|spanlinktextresources|//span[contains(text(), 'Resources')]|xpath|
+
+
+|Object Repository           |VIDEOPAGE                                                |
+|Id                          |Value                                               |Type|
+|divvjsbigplaybuttonplayvideo|.vjs-big-play-button                                |css |
+|divvjsplaycontrolpause      |.vjs-play-control.vjs-control.vjs-button.vjs-playing|css |
+|linkuniversitylogo          |university-logo                                     |id  |
+|link                        |.banner-homelink-menu-billing>a                     |css |
+
+
+|Object Repository|MYCOURSES                                                   |
+|Id               |Value                                                 |Type |
+|span             |//span[contains(text(), 'Orientation To High School')]|xpath|
+|linkbtnmain      |.btn.btn-md.btn-main                                  |css  |
+
+
+|Object Repository     |LOGIN                          |
+|Id                    |Value                     |Type|
+|textpassword          |password                  |id  |
+|buttonbtnprimarysignin|.btn.btn-block.btn-primary|css |
+

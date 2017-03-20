@@ -1,0 +1,59 @@
+|import                          |
+|net.indecomm.autong.api.fitnesse|
+
+!include -c <PennFosterTestSuite.CommonIncludes
+
+
+!|Script              |AutomationNG                                                                      |
+|set test             |${PAGE_NAME}                                                                      |
+|start browser        |chrome                                                                            |
+|maximize  browser                                                                                       |
+|open URL             |https://s-my.pennfoster.com/StudentLMSPFX/                                        |
+|wait for element     |{$STUDENTLMSPFX.textparam}                                                        |
+|click                |{$STUDENTLMSPFX.textparam}                                                        |
+|wait for element     |{$STUDENTLMSPFX.textparam}                                                        |
+|type                 |s41074081                              |into|{$STUDENTLMSPFX.textparam}|text field|
+|wait for element     |{$STUDENTLMSPFX.selectparamtype}                                                  |
+|select index number  |1                                      |from|{$STUDENTLMSPFX.selectparamtype}     |
+|wait for element     |{$STUDENTLMSPFX.buttonbtnprimarycontinue}                                         |
+|click                |{$STUDENTLMSPFX.buttonbtnprimarycontinue}                                         |
+|wait for element     |{$LOGIN.textpassword}                                                             |
+|click                |{$LOGIN.textpassword}                                                             |
+|wait for element     |{$LOGIN.textpassword}                                                             |
+|type                 |Password1                              |into|{$LOGIN.textpassword}     |text field|
+|wait for element     |{$LOGIN.buttonbtnprimarysignin}                                                   |
+|click                |{$LOGIN.buttonbtnprimarysignin}                                                   |
+|wait for element     |{$DEFAULTDASHBOARD.spanstudentidnumber}                                           |
+|verify page contains |{$DEFAULTDASHBOARD.spanstudentidnumber}|element                                   |
+|wait for element     |{$DEFAULTDASHBOARD.spanlinktext}                                                  |
+|click                |{$DEFAULTDASHBOARD.spanlinktext}                                                  |
+|wait for element     |{$MYCOURSES.span}                                                                 |
+|click                |{$MYCOURSES.span}                                                                 |
+|wait for element     |{$MYCOURSES.linkbtnmain}                                                          |
+|pause  execution  for|3                                      |seconds                                   |
+|click                |{$MYCOURSES.linkbtnmain}                                                          |
+|pause  execution  for|3                                      |seconds                                   |
+|wait for element     |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                         |
+|click                |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                         |
+|wait for element     |{$VIDEOPAGE.divvjsplaycontrolpause}                                               |
+|click                |{$VIDEOPAGE.divvjsplaycontrolpause}                                               |
+|wait for element     |{$VIDEOPAGE.linkuniversitylogo}                                                   |
+|click                |{$VIDEOPAGE.linkuniversitylogo}                                                   |
+|wait for element     |{$VIDEOPAGE.link}                                                                 |
+|click                |{$VIDEOPAGE.link}                                                                 |
+|wait for element     |{$BILLINGPAYMENTS.headerh}                                                        |
+|verify page contains |{$BILLINGPAYMENTS.headerh}             |element                                   |
+|wait for element     |{$BILLINGPAYMENTS.spanlinktextresources}                                          |
+|click                |{$BILLINGPAYMENTS.spanlinktextresources}                                          |
+|wait  for  element   |{$RESOURCES.player}                                                               |
+|mouse  over          |{$RESOURCES.player}                                                               |
+|wait for element     |{$RESOURCES.spanlinktexthome}                                                     |
+|click                |{$RESOURCES.spanlinktexthome}                                                     |
+|wait for element     |{$DEFAULTDASHBOARD.iconiconusername}                                              |
+|click                |{$DEFAULTDASHBOARD.iconiconusername}                                              |
+|wait for element     |{$DEFAULTDASHBOARD.linklogout}                                                    |
+|click                |{$DEFAULTDASHBOARD.linklogout}                                                    |
+|wait for element     |{$STUDENTLMSPFX.spanalertmsgtxt}                                                  |
+|verify page contains |{$STUDENTLMSPFX.spanalertmsgtxt}       |element                                   |
+|end result                                                                                              |
+|close browser                                                                                           |
