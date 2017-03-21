@@ -1,17 +1,16 @@
-|Object Repository|RESOURCES                             |
-|Id               |Value                           |Type |
-|player           |jquery_jplayer_1                |id   |
-|linkjpplayplay   |.jp-play                        |css  |
-|linkjppausepause |.jp-pause                       |css  |
-|spanlinktexthome |//span[contains(text(), 'Home')]|xpath|
+|Object Repository      |RESOURCES                             |
+|Id                     |Value                           |Type |
+|linkjpvideoplayiconplay|.jp-video-play-icon             |css  |
+|linkjppausepause       |.jp-pause                       |css  |
+|spanlinktexthome       |//span[contains(text(), 'Home')]|xpath|
 
 
 |Object Repository       |STUDENTLMSPFX                  |
 |Id                      |Value                     |Type|
 |textparam               |param                     |id  |
-|selectparamtype         |paramType                 |id  |
 |buttonbtnprimarycontinue|.btn.btn-primary.btn-block|css |
 |spanalertmsgtxt         |.alert-msg-txt            |css |
+|selectparamtype         |paramType                 |id  |
 
 
 |Object Repository  |DEFAULTDASHBOARD                                   |
@@ -28,12 +27,16 @@
 |spanlinktextresources|//span[contains(text(), 'Resources')]|xpath|
 
 
-|Object Repository           |VIDEOPAGE                                                |
-|Id                          |Value                                               |Type|
-|divvjsbigplaybuttonplayvideo|.vjs-big-play-button                                |css |
-|divvjsplaycontrolpause      |.vjs-play-control.vjs-control.vjs-button.vjs-playing|css |
-|linkuniversitylogo          |university-logo                                     |id  |
-|link                        |.banner-homelink-menu-billing>a                     |css |
+|Object Repository           |COURSESHOME                                                                   |
+|Id                          |Value                                                                   |Type |
+|headerpanelheading          |.panel-heading                                                          |css  |
+|linkuiid                    |.//a[@href='/courses/orientation-to-high-school']                       |xpath|
+|headerjscoursecontenttoggle |.panel-heading.js-course-about-toggle.js-course-content-toggle.is-hidden|css  |
+|divpanelcoursehookvideo     |.js-hook.panel-course-hook.panel-course-hook-video                      |css  |
+|divvjsbigplaybuttonplayvideo|.vjs-big-play-button                                                    |css  |
+|divvjsplaycontrolpause      |.vjs-play-control.vjs-control.vjs-button.vjs-playing                    |css  |
+|linkuniversitylogo          |university-logo                                                         |id   |
+|link                        |.banner-homelink-menu-billing>a                                         |css  |
 
 
 |Object Repository|MYCOURSES                                                   |

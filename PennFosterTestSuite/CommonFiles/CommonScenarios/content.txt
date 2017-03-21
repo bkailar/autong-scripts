@@ -39,42 +39,49 @@
 |log result      |{$loginSuccess}|with comment     |{$username} could not log into the application          |in page|Verify Login|
 |End If                                                                                                                          |
 
-!|Scenario            |verify course content                                                                              |
-|wait for element     |{$DEFAULTDASHBOARD.spanlinktext}                                                                   |
-|click                |{$DEFAULTDASHBOARD.spanlinktext}                                                                   |
-|wait for element     |{$MYCOURSES.span}                                                                                  |
-|log result           |COMMENT        |with comment     |Opened Program and Courses         |in page|Verify Course Content|
-|click                |{$MYCOURSES.span}                                                                                  |
-|wait for element     |{$MYCOURSES.linkbtnmain}                                                                           |
-|pause  execution  for|3              |seconds                                                                            |
-|log result           |COMMENT        |with comment     |Resuming the course                |in page|Verify Course Content|
-|click                |{$MYCOURSES.linkbtnmain}                                                                           |
-|pause  execution  for|3              |seconds                                                                            |
-|variable             |videoExists    |equals  to                                                                         |
-|wait for element     |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                                          |
-|assert               |{$videoExists} |true with message|Assert video course content exists                               |
-|If                   |{$videoExists}                                                                                     |
-|log result           |{$videoExists} |with comment     |Video course content exists        |in page|Verify Course Content|
-|Else                                                                                                                     |
-|log result           |{$videoExists} |with comment     |Video course content does not exist|in page|Verify Course Content|
-|End If                                                                                                                   |
-|click                |{$VIDEOPAGE.divvjsbigplaybuttonplayvideo}                                                          |
-|pause  execution  for|3              |seconds                                                                            |
-|variable             |videoPlaying   |equals  to                                                                         |
-|wait for element     |{$VIDEOPAGE.divvjsplaycontrolpause}                                                                |
-|assert               |{$videoPlaying}|true with message|Assert video is playing                                          |
-|If                   |{$videoPlaying}                                                                                    |
-|log result           |{$videoPlaying}|with comment     |Video is playing                   |in page|Verify Course Content|
-|Else                                                                                                                     |
-|log result           |{$videoPlaying}|with comment     |Video is not playing               |in page|Verify Course Content|
-|End If                                                                                                                   |
-|click                |{$VIDEOPAGE.divvjsplaycontrolpause}                                                                |
-|wait for element     |{$VIDEOPAGE.linkuniversitylogo}                                                                    |
-|click                |{$VIDEOPAGE.linkuniversitylogo}                                                                    |
+!|Scenario            |verify course content                                                                                                |
+|wait for element     |{$DEFAULTDASHBOARD.spanlinktext}                                                                                     |
+|click                |{$DEFAULTDASHBOARD.spanlinktext}                                                                                     |
+|wait for element     |{$MYCOURSES.linkbtnmain}                                                                                             |
+|log result           |COMMENT                          |with comment     |Opened Program and Courses         |in page|Verify Course Content|
+|pause  execution  for|3                                |seconds                                                                            |
+|log result           |COMMENT                          |with comment     |Resuming the course                |in page|Verify Course Content|
+|click                |{$MYCOURSES.linkbtnmain}                                                                                             |
+|pause  execution  for|3                                |seconds                                                                            |
+|wait for element     |{$COURSESHOME.headerpanelheading}                                                                                    |
+|verify page contains |{$COURSESHOME.headerpanelheading}|element                                                                            |
+|wait for element     |{$COURSESHOME.linkuiid}                                                                                              |
+|click                |{$COURSESHOME.linkuiid}                                                                                              |
+|wait for element     |{$COURSESHOME.headerjscoursecontenttoggle}                                                                           |
+|click                |{$COURSESHOME.headerjscoursecontenttoggle}                                                                           |
+|variable             |videoExists                      |equals  to                                                                         |
+|wait for element     |{$COURSESHOME.divpanelcoursehookvideo}                                                                               |
+|assert               |{$videoExists}                   |true with message|Assert video course content exists                               |
+|If                   |{$videoExists}                                                                                                       |
+|log result           |{$videoExists}                   |with comment     |Video course content exists        |in page|Verify Course Content|
+|Else                                                                                                                                       |
+|log result           |{$videoExists}                   |with comment     |Video course content does not exist|in page|Verify Course Content|
+|End If                                                                                                                                     |
+|click                |{$COURSESHOME.divpanelcoursehookvideo}                                                                               |
+|wait for element     |{$COURSESHOME.divvjsbigplaybuttonplayvideo}                                                                          |
+|click                |{$COURSESHOME.divvjsbigplaybuttonplayvideo}                                                                          |
+|pause  execution  for|6                                |seconds                                                                            |
+|variable             |videoPlaying                     |equals  to                                                                         |
+|wait for element     |{$COURSESHOME.divvjsplaycontrolpause}                                                                                |
+|assert               |{$videoPlaying}                  |true with message|Assert video is playing                                          |
+|If                   |{$videoPlaying}                                                                                                      |
+|log result           |{$videoPlaying}                  |with comment     |Video is playing                   |in page|Verify Course Content|
+|Else                                                                                                                                       |
+|log result           |{$videoPlaying}                  |with comment     |Video is not playing               |in page|Verify Course Content|
+|End If                                                                                                                                     |
+|click                |{$COURSESHOME.divvjsplaycontrolpause}                                                                                |
+|wait for element     |{$COURSESHOME.linkuniversitylogo}                                                                                    |
+|click                |{$COURSESHOME.linkuniversitylogo}                                                                                    |
+
 
 !|Scenario              |verify billing info                                                        |
-|wait for element       |{$VIDEOPAGE.link}                                                          |
-|click                  |{$VIDEOPAGE.link}                                                          |
+|wait for element       |{$COURSESHOME.link}                                                        |
+|click                  |{$COURSESHOME.link}                                                        |
 |wait for element       |{$BILLINGPAYMENTS.headerh}                                                 |
 |read and save text from|{$BILLINGPAYMENTS.headerh}                                                 |
 |log result             |COMMENT|with comment|Billing info {$varText}|in page|Verify Billing Details|
@@ -82,6 +89,32 @@
 !|Scenario    |read and save text from|element  |
 |variable     |varText                |equals to|
 |get text from|@element                         |
+
+!|Scenario               |verify resources                                                                              |
+|wait for element        |{$BILLINGPAYMENTS.spanlinktextresources}                                                      |
+|click                   |{$BILLINGPAYMENTS.spanlinktextresources}                                                      |
+|variable                |videoExists    |equals  to                                                                    |
+|wait for element        |{$RESOURCES.linkjpvideoplayiconplay}                                                          |
+|assert                  |{$videoExists} |true with message|Assert resource video exists                                |
+|If                      |{$videoExists}                                                                                |
+|log result              |{$videoExists} |with comment     |Video course content exists        |in page|Verify Resources|
+|Else                                                                                                                   |
+|log result              |{$videoExists} |with comment     |Video course content does not exist|in page|Verify Resources|
+|End If                                                                                                                 |
+|mouse hover and click on|{$RESOURCES.linkjpvideoplayiconplay}                                                          |
+|pause  execution  for   |4              |seconds                                                                       |
+|set page time out       |1                                                                                             |
+|variable                |videoPlaying   |equals  to                                                                    |
+|wait for element        |{$RESOURCES.linkjppausepause}                                                                 |
+|set page time out       |30                                                                                            |
+|assert                  |{$videoPlaying}|true with message|Assert video is playing                                     |
+|If                      |{$videoPlaying}                                                                               |
+|log result              |{$videoPlaying}|with comment     |Video is playing                   |in page|Verify Resources|
+|click                   |{$RESOURCES.linkjppausepause}                                                                 |
+|Else                                                                                                                   |
+|log result              |{$videoPlaying}|with comment     |Video is not playing               |in page|Verify Resources|
+|End If                                                                                                                 |
+
 
 !|Scenario           |log out                                                                                                            |
 |wait for element    |{$RESOURCES.spanlinktexthome}                                                                                      |

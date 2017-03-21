@@ -5,9 +5,9 @@
 '''Test Steps'''
 1. Open the Test URL
 2. Login with the student username and given password and verify if student logged in successfully
-3. Go to Programs and Courses and resume the existing course  
-4. Verify if the video is playing
-5. Go to Billings and Payements page and verify the billing info
+3. Go to Programs and Courses and resume the existing course  and Verify if the content video is playing
+4. Go to Billings and Payements page and verify the billing info
+5. Go to Programs and Courses and Verify if the resource video is playing
 6. Go to home page and log-out of the application
 7. Verify student logged out successfully
 
@@ -32,6 +32,7 @@ Not applicable
 |verify login action                                                              |
 |verify course content                                                            |
 |verify billing info                                                              |
+|verify resources                                                                 |
 |log out                                                                          |
 |end result                                                                       |
 |close browser                                                                    |
