@@ -90,30 +90,31 @@
 |variable     |varText                |equals to|
 |get text from|@element                         |
 
-!|Scenario               |verify resources                                                                              |
-|wait for element        |{$BILLINGPAYMENTS.spanlinktextresources}                                                      |
-|click                   |{$BILLINGPAYMENTS.spanlinktextresources}                                                      |
-|variable                |videoExists    |equals  to                                                                    |
-|wait for element        |{$RESOURCES.linkjpvideoplayiconplay}                                                          |
-|assert                  |{$videoExists} |true with message|Assert resource video exists                                |
-|If                      |{$videoExists}                                                                                |
-|log result              |{$videoExists} |with comment     |Video course content exists        |in page|Verify Resources|
-|Else                                                                                                                   |
-|log result              |{$videoExists} |with comment     |Video course content does not exist|in page|Verify Resources|
-|End If                                                                                                                 |
-|mouse hover and click on|{$RESOURCES.linkjpvideoplayiconplay}                                                          |
-|pause  execution  for   |4              |seconds                                                                       |
-|set page time out       |1                                                                                             |
-|variable                |videoPlaying   |equals  to                                                                    |
-|wait for element        |{$RESOURCES.linkjppausepause}                                                                 |
-|set page time out       |30                                                                                            |
-|assert                  |{$videoPlaying}|true with message|Assert video is playing                                     |
-|If                      |{$videoPlaying}                                                                               |
-|log result              |{$videoPlaying}|with comment     |Video is playing                   |in page|Verify Resources|
-|click                   |{$RESOURCES.linkjppausepause}                                                                 |
-|Else                                                                                                                   |
-|log result              |{$videoPlaying}|with comment     |Video is not playing               |in page|Verify Resources|
-|End If                                                                                                                 |
+!|Scenario            |verify resources                                                                                            |
+|wait for element     |{$BILLINGPAYMENTS.spanlinktextresources}                                                                    |
+|click                |{$BILLINGPAYMENTS.spanlinktextresources}                                                                    |
+|variable             |videoExists                  |equals  to                                                                    |
+|wait for element     |{$RESOURCES.player}                                                                                         |
+|assert               |{$videoExists}               |true with message|Assert resource video exists                                |
+|If                   |{$videoExists}                                                                                              |
+|log result           |{$videoExists}               |with comment     |Video course content exists        |in page|Verify Resources|
+|mouse  over          |{$RESOURCES.player}                                                                                         |
+|click                |{$RESOURCES.player}                                                                                         |
+|Else                                                                                                                              |
+|log result           |{$videoExists}               |with comment     |Video course content does not exist|in page|Verify Resources|
+|End If                                                                                                                            |
+|pause  execution  for|4                            |seconds                                                                       |
+|set page time out    |1                                                                                                           |
+|variable             |videoPlaying                 |equals  to                                                                    |
+|verify page contains |{$RESOURCES.linkjppausepause}|element                                                                       |
+|set page time out    |30                                                                                                          |
+|assert               |{$videoPlaying}              |true with message|Assert video is playing                                     |
+|If                   |{$videoPlaying}                                                                                             |
+|log result           |{$videoPlaying}              |with comment     |Video is playing                   |in page|Verify Resources|
+|click                |{$RESOURCES.linkjppausepause}                                                                               |
+|Else                                                                                                                              |
+|log result           |{$videoPlaying}              |with comment     |Video is not playing               |in page|Verify Resources|
+|End If                                                                                                                            |
 
 
 !|Scenario           |log out                                                                                                            |

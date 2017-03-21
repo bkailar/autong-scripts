@@ -1,8 +1,9 @@
-|Object Repository      |RESOURCES                             |
-|Id                     |Value                           |Type |
-|linkjpvideoplayiconplay|.jp-video-play-icon             |css  |
-|linkjppausepause       |.jp-pause                       |css  |
-|spanlinktexthome       |//span[contains(text(), 'Home')]|xpath|
+|Object Repository      |RESOURCES                                                 |
+|Id                     |Value                                               |Type |
+|player                 |jquery_jplayer_1                                    |id   |
+|linkjpvideoplayiconplay|.jp-video-play-icon                                 |css  |
+|linkjppausepause       |.//a[@class='jp-pause' and contains(@style,'block')]|xpath|
+|spanlinktexthome       |//span[contains(text(), 'Home')]                    |xpath|
 
 
 |Object Repository       |STUDENTLMSPFX                  |
